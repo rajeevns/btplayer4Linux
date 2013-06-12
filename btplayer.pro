@@ -26,3 +26,6 @@ SOURCES += dbusbindings/org.bluez_audiosource.cpp \
            main.cpp \
            avrcpprofile/qtavrcpbindingtestapp.cpp
 
+RESOURCES += \
+    btplayericons.qrc
+

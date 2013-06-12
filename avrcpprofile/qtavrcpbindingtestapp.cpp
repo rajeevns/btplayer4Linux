@@ -134,12 +134,12 @@ QtAvrcpBindingTestApp::QtAvrcpBindingTestApp(QWidget *parent) :
     palette.setBrush(backgroundRole(), QBrush(QImage()));
     //this->setPalette(palette);
 
-    m_connectaction = new QAction(QIcon("images/btdisconnect.png"),"Connect",m_toptoolbar);
+    m_connectaction = new QAction(QIcon(":images/btdisconnect.png"),"Connect",m_toptoolbar);
     m_toptoolbar->addAction(m_connectaction);
-    m_prevaction = new QAction(QIcon("images/previous.png"),"Previous",m_bottomtoolbar);
-    m_playpauseaction = new QAction(QIcon("images/play.png"),"Play",m_bottomtoolbar);
-    m_nextaction = new QAction(QIcon("images/next.png"),"Next",m_bottomtoolbar);
-    m_stopaction = new QAction(QIcon("images/stop.png"),"Stop",m_bottomtoolbar);
+    m_prevaction = new QAction(QIcon(":images/previous.png"),"Previous",m_bottomtoolbar);
+    m_playpauseaction = new QAction(QIcon(":images/play.png"),"Play",m_bottomtoolbar);
+    m_nextaction = new QAction(QIcon(":images/next.png"),"Next",m_bottomtoolbar);
+    m_stopaction = new QAction(QIcon(":images/stop.png"),"Stop",m_bottomtoolbar);
     m_mainlayout = new QVBoxLayout();
     m_bottomhboxlayout = new QHBoxLayout();
     m_tophboxlayout = new QHBoxLayout();
@@ -154,7 +154,7 @@ QtAvrcpBindingTestApp::QtAvrcpBindingTestApp(QWidget *parent) :
     m_bottomhboxlayout->addWidget(m_bottomtoolbar);
     m_mainlayout->addLayout(m_tophboxlayout);
     m_mainlayout->addLayout(m_bottomhboxlayout);
-    m_gnome_setinterface->GrabMediaPlayerKeys("btplayer",0);
+
 
     QDBusReply<bool> reply = m_avrcpbinding->IsConnected();
     
@@ -170,7 +170,8 @@ QtAvrcpBindingTestApp::QtAvrcpBindingTestApp(QWidget *parent) :
         }
         else
         {
-            m_connectaction->setIcon(QIcon("images/btconnected.png"));
+            m_connectaction->setIcon(QIcon(":images/btconnected.png"));
+            m_gnome_setinterface->GrabMediaPlayerKeys("btplayer",0);
         }
     }    
     setLayout(m_mainlayout);
@@ -212,7 +213,7 @@ void QtAvrcpBindingTestApp::btDeamonConnectionStatusSlot(const QString &in0, con
              m_moduleid = 0;
          }
          isconnected = false;
-         m_connectaction->setIcon(QIcon("images/btdisconnect.png"));
+         m_connectaction->setIcon(QIcon(":images/btdisconnect.png"));
 
      }
      if( true == bt_cnstat )
@@ -221,7 +222,8 @@ void QtAvrcpBindingTestApp::btDeamonConnectionStatusSlot(const QString &in0, con
          qDebug()<<"Got Signal Connected from bt daemon**"<<in0;
          qDebug()<<"Module id "<<m_moduleid;
          isconnected = true;
-         m_connectaction->setIcon(QIcon("images/btconnected.png"));
+         m_connectaction->setIcon(QIcon(":images/btconnected.png"));
+         m_gnome_setinterface->GrabMediaPlayerKeys("btplayer",0);
      }
         
 }
@@ -238,7 +240,8 @@ void QtAvrcpBindingTestApp::btDeamonConnectedSlot()
          {
              m_moduleid = l_mdid;   
              isconnected = true;
-             m_connectaction->setIcon(QIcon("images/btconnected.png"));
+             m_connectaction->setIcon(QIcon(":images/btconnected.png"));
+             m_gnome_setinterface->GrabMediaPlayerKeys("btplayer",0);
          }
      }
      
@@ -260,7 +263,7 @@ void QtAvrcpBindingTestApp::btDeamonDisconnectedSlot()
 
 void QtAvrcpBindingTestApp::playSlot()
 {
-    qDebug()<<"Called Play<<m_moduleid";
+    qDebug()<<"Called Play m_moduleid"<<m_moduleid;
     if(true == isconnected && 0 == m_moduleid)
     {
         int l_mdid=0;

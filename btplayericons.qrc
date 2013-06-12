@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Audio.png</file>
+        <file>images/Audio-Speaker.png</file>
+        <file>images/btconnected.png</file>
+        <file>images/btdisconnect.png</file>
+        <file>images/btplayer.png</file>
+        <file>images/next.png</file>
+        <file>images/pause.png</file>
+        <file>images/play.png</file>
+        <file>images/previous.png</file>
+        <file>images/settings.png</file>
+        <file>images/Sound-System.png</file>
+        <file>images/stop.png</file>
+    </qresource>
+</RCC>
