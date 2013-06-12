@@ -1,0 +1,28 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node name="/org/bluez/3003/hci0/dev_XX_XX_XX_XX_XX_XX">
+	<interface name="org.bluez.Control">
+		<method name="IsConnected">
+		<arg type="b" direction="out"/>
+		</method>
+		<method name="Next">
+		</method>
+		<method name="PlayPause">
+		</method>
+		<method name="Prev">
+		</method>
+		<method name="VolumeDown">
+		</method>
+		<method name="VolumeUp">
+		</method>
+		<signal name="Connected">
+		</signal>
+		<signal name="PropertyChanged">
+        <arg type="s"/>         
+		<arg type="v"/>
+        </signal>
+		<signal name="DisConnected">
+        </signal>
+	</interface>
+</node>
+
